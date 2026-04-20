@@ -1,60 +1,49 @@
-# Static-Routing-SDN-Controller
-POX-based Static Routing using SDN Controller in Mininet with OpenFlow flow rules.
+# Static Routing using SDN Controller using POX and Mininet
 
-## Project Overview
-Static-Routing-SDN-Controller is a Software Defined Networking (SDN) project developed using the POX controller, Mininet emulator, and OpenFlow switches. The objective of this project is to implement static routing paths between hosts by manually installing flow rules through the SDN controller.
+## 1. Introduction
 
-Unlike traditional networks where routing decisions are taken by routers individually, SDN separates the control plane from the data plane. The controller centrally manages the network and decides how packets should travel through switches.
+Software Defined Networking (SDN) is a modern networking architecture where the control plane is separated from the data plane. Instead of configuring each network device manually, a centralized controller manages traffic flow intelligently.
 
-In this project, the controller predefines fixed paths (static routes) and installs corresponding flow entries in Open vSwitch switches to ensure packet forwarding between hosts.
+In this project, a POX controller is used with Mininet to implement static routing. The controller installs fixed OpenFlow rules in switches so that packets always follow a predefined path.
 
 ---
 
-## Objective
-- Design a simple SDN network topology in Mininet.
-- Implement static routing using controller-installed flow rules.
-- Verify connectivity between hosts.
-- Observe flow entries in switches.
-- Demonstrate centralized network control using SDN.
+## 2. Problem Statement
+
+Implement static routing paths using controller-installed OpenFlow flow rules in a Software Defined Network using Mininet topology and POX controller.
+
+The routing path should remain fixed and communication between hosts must be verified successfully.
 
 ---
 
-## Technologies Used
-- Ubuntu Linux
-- Python
-- POX Controller
-- Mininet
-- Open vSwitch
-- OpenFlow Protocol
+## 3. Objective
+
+The objectives of this project are:
+
+- To understand the concept of SDN.
+- To create a virtual network using Mininet.
+- To use POX controller for managing switches.
+- To install static flow rules manually.
+- To verify communication between hosts.
+- To display switch flow tables.
 
 ---
 
-## Network Topology
-A linear topology with:
+## 4. Technologies Used
 
-- 2 Hosts (`h1`, `h2`)
-- 2 Switches (`s1`, `s2`)
-
-Connection Path:
-
-h1 ↔ s1 ↔ s2 ↔ h2
-
----
-
-## Working Principle
-1. Mininet creates the virtual network topology.
-2. POX controller connects to switches.
-3. When switches join the controller, flow rules are installed manually.
-4. Packets from `h1` to `h2` and `h2` to `h1` follow predefined static paths.
-5. Connectivity is tested using `pingall`.
+| Tool | Purpose |
+|------|---------|
+| Ubuntu | Operating System |
+| Mininet | Network emulator |
+| POX Controller | SDN Controller |
+| OpenFlow | Communication protocol |
+| Open vSwitch | Virtual switch |
 
 ---
 
-## Commands Used
+## 5. Network Topology Used
 
-```bash
-sudo mn --topo linear,2 --controller remote
-pingall
-sh ovs-vsctl show
-sh ovs-ofctl dump-flows s1
-sh ovs-ofctl dump-flows s2
+A linear topology with 2 hosts and 2 switches was used.
+
+```text id="h9wxoa"
+h1 ---- s1 ---- s2 ---- h2
